@@ -1,0 +1,89 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Clone</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:,">
+    <!-- Firebase SDKs in correct order -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+</head>
+<body>
+    <!-- Auth Section -->
+    <div id="auth-section" class="container">
+        <div class="auth-box">
+            <h2>WhatsApp Clone</h2>
+            <div id="login-form">
+                <input type="email" id="login-email" placeholder="Email">
+                <input type="password" id="login-password" placeholder="Password">
+                <button onclick="login()">Login</button>
+                <p>Don't have an account? <span onclick="toggleAuth()">Sign up</span></p>
+            </div>
+            <div id="signup-form" class="hidden">
+                <input type="text" id="signup-name" placeholder="Full Name">
+                <input type="email" id="signup-email" placeholder="Email">
+                <input type="password" id="signup-password" placeholder="Password">
+                <button onclick="signup()">Sign Up</button>
+                <p>Already have an account? <span onclick="toggleAuth()">Login</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Chat Section -->
+    <div id="chat-section" class="hidden">
+        <!-- Updated Sidebar -->
+        <div class="sidebar">
+            <div class="user-profile">
+                <div class="user-info">
+                    <img id="user-avatar" src="https://ui-avatars.com/api/?name=User" alt="Profile" class="user-avatar">
+                    <div class="user-details">
+                        <span id="user-name" class="user-name">User Name</span>
+                        <span id="user-email" class="user-email">user@example.com</span>
+                    </div>
+                </div>
+                <div class="user-actions">
+                    <button onclick="toggleTheme()">🌓</button>
+                    <button onclick="logout()">Logout</button>
+                </div>
+            </div>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search chats..." onkeyup="searchChats(event)">
+            </div>
+            <div class="chat-list" id="chat-list">
+                <!-- Chat list items will be added here -->
+            </div>
+        </div>
+
+        <!-- Chat Area -->
+        <div class="chat-area">
+            <div class="chat-header">
+                <!-- Updated avatar source -->
+                <img id="current-chat-avatar" src="https://ui-avatars.com/api/?name=Contact" alt="Contact">
+                <span id="current-chat-name"></span>
+                <div class="chat-actions">
+                    <span id="typing-indicator" class="hidden">typing...</span>
+                </div>
+            </div>
+            <div class="messages" id="messages">
+                <!-- Messages will be added here -->
+            </div>
+            <div class="message-input">
+                <input type="text" id="message-text" placeholder="Type a message">
+                <button onclick="sendMessage()">Send</button>
+                <input type="file" id="file-input" class="hidden">
+                <button onclick="document.getElementById('file-input').click()">📎</button>
+            </div>
+        </div>
+    </div>
+    <script src="app.js" defer></script>
+</body>
+</html>
+
+
+
